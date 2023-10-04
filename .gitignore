@@ -1,2 +1,3 @@
 /user/.env
 /feedback/.env
+__pycache__
