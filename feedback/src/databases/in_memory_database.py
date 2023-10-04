@@ -1,5 +1,5 @@
 import uuid
-from src.models.domains import DBFeedback, FeedbackID, UserID
+from models.domains import DBFeedback, FeedbackID, UserID
 from .base_database import BaseDatabase
 
 USER_ID = UserID(265452349517802502818104800389817424405)

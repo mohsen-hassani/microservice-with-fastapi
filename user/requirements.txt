@@ -1,0 +1,10 @@
+-i https://pypi.org/simple
+cffi==1.16.0; python_version >= '3.8'
+cryptography==41.0.4; python_version >= '3.7'
+email-validator==2.0.0.post2
+fastapi==0.103.2; python_version >= '3.7'
+pydantic[email]==2.4.2; python_version >= '3.7'
+pydantic-core==2.10.1; python_version >= '3.7'
+pydantic-settings==2.0.3; python_version >= '3.7'
+python-dotenv==1.0.0; python_version >= '3.8'
+uvicorn==0.23.2; python_version >= '3.8'

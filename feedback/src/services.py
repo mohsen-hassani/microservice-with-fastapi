@@ -1,8 +1,8 @@
 import dataclasses
 
-from src.databases import BaseDatabase
-from src.models.schemas import FeedbackSchema, FeedbackOutSchema
-from src.models.domains import DBFeedback, UserID
+from databases import BaseDatabase
+from models.schemas import FeedbackSchema, FeedbackOutSchema
+from models.domains import DBFeedback, UserID
 
 
 class BaseService:

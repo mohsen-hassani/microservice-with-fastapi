@@ -2,7 +2,7 @@ import dataclasses
 from abc import ABC, abstractmethod
 from enum import Enum, auto
 
-from src.models.domains import UserID
+from models.domains import UserID
 
 
 class Statuses(Enum):

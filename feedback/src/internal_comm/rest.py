@@ -1,7 +1,7 @@
 import requests
 from .base import BaseInternalCommunication, InternalResponse, Statuses
-from src.models.domains import UserID
-from src.config import settings
+from models.domains import UserID
+from config import settings
 
 
 class RestInternalCommunication(BaseInternalCommunication):

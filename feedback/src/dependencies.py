@@ -2,9 +2,9 @@ from fastapi import Header, Depends
 from typing import Annotated
 from cryptography.fernet import InvalidToken
 
-from src.databases import InMemoryDictDatabase, BaseDatabase
-from src.internal_comm import BaseInternalCommunication, RestInternalCommunication
-from src.models.domains import UserID
+from databases import InMemoryDictDatabase, BaseDatabase
+from internal_comm import BaseInternalCommunication, RestInternalCommunication
+from models.domains import UserID
 
 
 def get_db() -> BaseDatabase:

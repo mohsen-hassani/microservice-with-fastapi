@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Body, Depends
 
-from src.models.domains import UserID
-from src.models.schemas import FeedbackSchema, FeedbackOutSchema
-from src.dependencies import get_db, get_user_id
-from src.services import NewFeedbackService, ListFeedbackService
+from models.domains import UserID
+from models.schemas import FeedbackSchema, FeedbackOutSchema
+from dependencies import get_db, get_user_id
+from services import NewFeedbackService, ListFeedbackService
 
 feedback_public_router = APIRouter()
 

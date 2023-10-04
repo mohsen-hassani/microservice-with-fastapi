@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.models.domains import DBFeedback, FeedbackID
+from models.domains import DBFeedback, FeedbackID
 
 
 class BaseDatabase(ABC):

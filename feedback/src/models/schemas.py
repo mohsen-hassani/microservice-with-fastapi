@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from src.models.domains import FeedbackID, UserID
+from models.domains import FeedbackID, UserID
 
 
 class FeedbackSchema(BaseModel):
