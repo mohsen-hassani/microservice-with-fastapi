@@ -5,7 +5,8 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
-    secret_key: str
+    USER_SERVICE_BASE_URL: str
+    USER_SERVICE_PORT: int
 
     class Config:
         case_sensitive = False

@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from pydantic import EmailStr
 
+from models.domains import UserID
+
 
 class UserRegisterSchema(BaseModel):
     email: EmailStr
@@ -15,7 +17,7 @@ class UserLoginSchema(BaseModel):
 
 
 class UserSchema(BaseModel):
-    id_: int
+    id_: UserID
     email: EmailStr
     first_name: str
     last_name: str

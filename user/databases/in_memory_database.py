@@ -1,10 +1,10 @@
 import uuid
-from models.domains import DBUser
+from models.domains import DBUser, UserID
 from models.schemas import UserSchema
 from .base_database import BaseDatabase
 from .exceptions import ObjectNotExistsException
 
-USER_ID = 265452349517802502818104800389817424405
+USER_ID = UserID(265452349517802502818104800389817424405)
 USERS = {
     USER_ID: DBUser(id_=USER_ID, email="e@mail.com", password="123", first_name="Mohsen", last_name="Hassani")
 }
@@ -12,23 +12,23 @@ USERS = {
 
 class InMemoryDictDatabase(BaseDatabase):
     def __init__(self):
-        self.__db: dict[int, DBUser] = USERS
+        self.__db: dict[UserID, DBUser] = USERS
 
     def insert(self, user: DBUser) -> int:
         id_ = user.id_
         if id_ is None:
             id_ = self.get_new_id()
-            user.id_ = id_
+            user.id_ = UserID(id_)
         self.__db[id_] = user
         return id_
 
-    def get_by_id(self, id_: int) -> DBUser:
+    def get_by_id(self, id_: UserID) -> DBUser:
         try:
             return self.__db[id_]
         except KeyError:
             raise ObjectNotExistsException()
 
-    def update_by_id(self, id_: int, data: UserSchema) -> DBUser:
+    def update_by_id(self, id_: UserID, data: UserSchema) -> DBUser:
         try:
             user = self.__db[id_]
         except KeyError:

@@ -1,9 +1,12 @@
 import dataclasses
+from typing import NewType
+
+UserID = NewType("UserID", int)
 
 
 @dataclasses.dataclass
 class DBUser:
-    id_: int | None
+    id_: UserID | None
     email: str
     password: str
     first_name: str | None

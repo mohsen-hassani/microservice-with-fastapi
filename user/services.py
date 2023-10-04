@@ -1,10 +1,11 @@
 import dataclasses
 
 from fastapi import HTTPException, status
+from cryptography.fernet import InvalidToken
 
 from databases import BaseDatabase, ObjectNotExistsException
 from models.schemas import UserRegisterSchema, UserSchema, UserTokenSchema, UserLoginSchema
-from models.domains import DBUser
+from models.domains import DBUser, UserID
 from utils import encrypt, decrypt
 
 UNAUTHORIZED_EXCEPTION = HTTPException(
@@ -47,10 +48,10 @@ class LoginUserService(BaseService):
 
 class GetCurrentUserService(BaseService):
     def exec(self, token: str) -> UserSchema:
-        user_id = decrypt(token)
         try:
-            db_user: DBUser = self.db.get_by_id(int(user_id))
-        except ObjectNotExistsException:
+            user_id = decrypt(token)
+            db_user: DBUser = self.db.get_by_id(UserID(int(user_id)))
+        except (ObjectNotExistsException, InvalidToken):
             raise UNAUTHORIZED_EXCEPTION
         user_dict = dataclasses.asdict(db_user)
         del user_dict["password"]
@@ -59,7 +60,7 @@ class GetCurrentUserService(BaseService):
 
 class UpdateCurrentUserService(BaseService):
     def exec(self, current_user: UserSchema, data: UserSchema) -> UserSchema:
-        db_user = self.db.update_by_id(int(current_user.id_), data)
+        db_user = self.db.update_by_id(UserID(current_user.id_), data)
         user_dict = dataclasses.asdict(db_user)
         del user_dict["password"]
         return UserSchema(**user_dict)
